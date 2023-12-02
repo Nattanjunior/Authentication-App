@@ -1,14 +1,21 @@
+import { useState } from 'react'
 import email from '../../assets/email.png'
 import lock from '../../assets/lock.png'
 import google from '../../assets/google.png'
 import github from '../../assets/001-github.png'
 import '../login/login.scss'
+import { BrowserRouter as Router,Link } from 'react-router-dom'
 export function Login(){
+    const [Verify, setVerify] = useState(true)
+    const handleRegister = ()=>{
+       setVerify(!Verify) 
+    };
+
     return(
-        <>
+        <Router>
         <main>
-            <section className="login">
-                <h2>Login</h2>
+            <section className={Verify? 'login':'register-user'} >
+                <h2>{Verify? 'Login':'Register'}</h2>
                 <form action="">
                     <div className="email input">
                         <img src={email} alt="" />
@@ -30,15 +37,16 @@ export function Login(){
                     <span className='github'><img src={github} alt="" /></span>
                 </section>
 
-
-                <section className='register'>Don’t have an account yet?<a href=""> Register</a>
+                <section className='register'>
+                    {Verify? (
+                         <p>Don’t have an account yet?<Link to="/Register" onClick={handleRegister}>Register</Link></p>
+                    ):(
+                        <p> Already have an account?<Link to={"/Login"} onClick={handleRegister}>Login</Link></p>
+                    )}
+                   
                 </section>
-            </section>
-            
-            
-
-            
+            </section>  
         </main>
-        </>
+        </Router>
     )
 }
