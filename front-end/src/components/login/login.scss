@@ -1,7 +1,8 @@
 $cor1:#BDBDBD;
+$corLink:#2D9CDB;
 $font:'Noto Sans', sans-serif;;
 
-body{
+body,main{
     width: 100%;
     height:100%;
     font-family: $font;
@@ -9,18 +10,65 @@ body{
 .login{
     max-width: 473px;
     max-height: 544px;
-    margin: 10% auto;
+    margin: 5% auto;
     border: 1px solid $cor1;
     border-radius: 24px;
 
     h2{
-        margin: 10px 20px ;
+        margin: 50px 70px 20px;
+        font-size: 18px;
+        font-weight: 600;
     }
     form{
+       
         .input{
             display: flex;
             justify-content: center;
             align-items: center;
+
+            img{
+                position: relative;
+                top: -11px;
+                left:35px;
+            }
+            input{
+                width: 356px;
+                height:48px;
+                padding-left: 40px;
+                border:1px solid $cor1;
+                outline: none;
+                margin-bottom: 20px;
+                border-radius:8px;
+            }
+        }
+        button{
+            width: 356px;
+            height:38px;
+            margin-left: 68px;
+            font-weight: 400;
+        }
+    }
+    p{
+        text-align: center;
+        margin-top: 30px;
+        color: $cor1;
+    }
+    .login-tecnologies{
+        text-align: center;
+        margin-bottom: 30px;
+        span{
+            margin: 0px 20px;
+            cursor: pointer;
+        }
+    }
+    .register{
+        text-align: center;
+        color: $cor1;
+        font-weight: 400;
+        margin-bottom: 30px;
+        a{
+            text-decoration: none;
+            color: $corLink;
         }
     }
 }

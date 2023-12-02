@@ -19,7 +19,7 @@ export function Login(){
                         <img src={lock} alt=""/>
                         <input type="password" name="password" id="password" placeholder="Password" required/>
                     </div>
-                    <button type="submit" className="btn btn-primary">Login</button>
+                    <button type="submit" className="btn btn-primary input">Login</button>
                 </form>
 
                 <p>or continue with these social profile</p>
