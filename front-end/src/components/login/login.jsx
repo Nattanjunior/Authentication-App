@@ -5,6 +5,7 @@ import google from '../../assets/google.png'
 import github from '../../assets/001-github.png'
 import '../login/login.scss'
 import { BrowserRouter as Router,Link } from 'react-router-dom'
+import { GoogleLogin } from '@react-oauth/google'
 export function Login(){
     const [Verify, setVerify] = useState(true)
     const handleRegister = ()=>{
