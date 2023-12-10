@@ -61,13 +61,13 @@ export function Login(){
 
                 <section className='login-tecnologies'>
                     <span className='google'>
-                    <GoogleOAuthProvider clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'>
+                    <GoogleOAuthProvider clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
+                    >
                         <GoogleLogin
-                        buttonText='Login with Goolgle'
                         onScriptLoadSuccess={handleSucessLogin}
                         onScriptLoadError={handleErrorLogin}
                         />
-                    </GoogleOAuthProvider><img src={google} alt="" />
+                    </GoogleOAuthProvider>
                     </span>
                     <span className='github'><img src={github} alt="" /></span>
                 </section>
