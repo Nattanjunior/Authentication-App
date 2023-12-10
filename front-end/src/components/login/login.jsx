@@ -64,6 +64,7 @@ export function Login(){
                     <GoogleOAuthProvider clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
                     >
                         <GoogleLogin
+                        clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
                         onScriptLoadSuccess={handleSucessLogin}
                         onScriptLoadError={handleErrorLogin}
                         />
