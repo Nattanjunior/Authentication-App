@@ -9,6 +9,7 @@ import { GoogleLogin } from '@react-oauth/google'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import axios from 'axios'
 export function Login(){
+    const [profile, setProfile] = useState(true)
     const [Verify, setVerify] = useState(true)
     const [User, setUser] = useState(null)
     const [emailLogin, setEmailLogin] = useState('')
@@ -56,7 +57,7 @@ export function Login(){
                 <section className={Verify? 'login':'register-user'} >
                     <h2>{Verify? 'Login':'Register'}</h2>
                     {Verify? (
-                        <form action="">
+                        <form action="Feed" method='post'>
                         <div className="email input">
                             <img src={email} alt="" />
                             <input type="email" id="email" name="email" placeholder="Email" required onChange={(e)=>{setEmailLogin(e.target.value)}}/>
@@ -69,7 +70,7 @@ export function Login(){
                         <button type="submit" className="btn btn-primary input">Login</button>
                     </form>
                     ):(
-                        <form action="">
+                        <form action="Feed" method='post'>
                         <div className="email input">
                             <img src={email} alt="" />
                             <input type="email" id="emailRegister" name="emailRegister" placeholder="Email" required onChange={(e)=>{setEmailRegister(e.target.value)}}/>
@@ -103,7 +104,7 @@ export function Login(){
     
                     <section className='register'>
                         {Verify? (
-                             <p>Don’t have an account yet?<Link to="/Register" onClick={handleRegister}>Register</Link></p>
+                            <p>Don’t have an account yet?<Link to={"/Register"} onClick={handleRegister}>Register</Link></p>
                         ):(
                             <p> Already have an account?<Link to={"/Login"} onClick={handleRegister}>Login</Link></p>
                         )}
@@ -112,7 +113,42 @@ export function Login(){
                 </section>  
             </main>
             ):(
-                <div></div>
+                <main className='Profile'> 
+                {profile ? (
+                     <div>
+                        <h1>Personal info</h1>
+                        <p>Basic info, like your name and photo</p>
+                        <section className='informacoes'>
+                            <span>
+                                <h2>Profile</h2>
+                                <p>Some info may be visible to other people</p>
+                                <button>Edit</button>
+                             </span>
+                             <span className='photo'>
+                                <p>PHOTO</p> <img src="" alt="" />
+                             </span>
+                             <span className='name'>
+                                <p>NAME</p> <p>{}</p>
+                             </span>
+                             <span className='bio'>
+                                <p>BIO</p> <p>{}</p>
+                             </span>
+                             <span className='PHONE'>
+                                <p>PHONE</p> <p>{}</p>
+                             </span>
+                             <span className='email'>
+                                <p>email</p> <p>{emailLogin}</p>
+                             </span>
+                             <span className='password'>
+                                <p>PASSWORD</p> <p>{passwordLogin}</p>
+                             </span>
+                         </section>
+                     </div>
+                ):(
+                    <div></div>
+                )}
+                   
+                </main>
             )}
         
         </Router>
