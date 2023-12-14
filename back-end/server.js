@@ -58,6 +58,22 @@ app.post('/Feed', async (req,res)=>{
     catch(erro){
         return res.json({message: "Erro ao fazer login!!"})
     }
+});
+app.post('/Feed/editprofile', async (req, res)=>{
+    try {
+        const {nameEdit,bioEdit,phoneEdit,emailEdit,passwordEdit} = req.body;
+        const editionProfile = new Edition({
+        nameEdit:nameEdit,
+        bioEdit:bioEdit,
+        phoneEdit:phoneEdit,
+        emailEdit:emailEdit,
+        passwordEdit:passwordEdit
+    });
+        const saveProfile = await editionProfile.save()
+        console.log(saveProfile)
+    } catch (error) {
+        return res.json({message:"Erro ao salvar os novos dados do usuário!!! "})
+    }
 })
 app.listen(port,()=>{
     console.log(`servidor aberto na porta ${port}`);
