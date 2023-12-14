@@ -16,6 +16,11 @@ export function Login() {
     const [passwordLogin, setPasswordLogin] = useState('')
     const [emailRegister, setEmailRegister] = useState('')
     const [passwordRegister, setPasswordRegister] = useState('')
+    const [nameEdit, setNameEdit] = useState('')
+    const [bioEdit, setBioEdit] = useState('')
+    const [phoneEdit, setPhoneEdit] = useState('')
+    const [emailEdit, setEmailEdit] = useState('')
+    const [passwordEdit,  setpasswordEdit] = useState('')
     const handleRegister = () => {
         setVerify(!Verify)
     };
