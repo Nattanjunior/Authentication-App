@@ -24,7 +24,7 @@ let Edition = mongoose.model("edit", EditionData)
 app.get('/',  (req,res)=>{
     return res.send('hello world')
 });
-app.get('/', async (req,res)=>{
+app.post('/', async (req,res)=>{
     try{
         const {emailRegister,passwordRegister} = req.body;
         const Register = new Data({
