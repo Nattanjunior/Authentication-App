@@ -30,7 +30,7 @@ export function Login() {
 
     const SendLogin = async (e) => {
         e.preventDefault()
-        const response = await axios.post('',
+        const response = await axios.post('http://localhost:3000/Login',
             JSON.stringify({ emailLogin, passwordLogin }),
             {
                 headers: { 'Content-Type': 'application/json' }
@@ -40,11 +40,20 @@ export function Login() {
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
-        const RegisterResponse = await axios.post('',
-            JSON.stringify({ emailRegister, passwordLogin }),
+        const RegisterResponse = await axios.post('http://localhost:3000/Feed',
+            JSON.stringify({ emailRegister, passwordRegister }),
             {
                 headers: { 'Content-Type': 'application/json' }
             }
+        )
+        console.log(response)
+    }
+    const saveEditeProfile = async (e)=>{
+        const response = await axios.post('http://localhost:3000/Feed/editprofile',
+        JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit}),
+        {
+            headers: { 'Content-Type': 'application/json' }
+        }
         )
         console.log(response)
     }
@@ -75,7 +84,7 @@ export function Login() {
                                     <img src={lock} alt="" />
                                     <input type="password" name="password" id="password" placeholder="Password" required onChange={(e) => { setPasswordLogin(e.target.value) }} />
                                 </div>
-                                <button type="submit" className="btn btn-primary input">Login</button>
+                                <button type="submit" className="btn btn-primary input" onClick={SendLogin}>Login</button>
                             </form>
                         ) : (
                             <form action="Feed" method='post'>
@@ -88,7 +97,7 @@ export function Login() {
                                     <img src={lock} alt="" />
                                     <input type="password" name="passwordRegister" id="passwordRegister" placeholder="Password" required onChange={(e) => { setPasswordRegister(e.target.value) }} />
                                 </div>
-                                <button type="submit" className="btn btn-primary input" onClick={SendLogin}>Criar conta</button>
+                                <button type="submit" className="btn btn-primary input" onClick={RegisterLogin}>Criar conta</button>
                             </form>
                         )}
 
@@ -165,21 +174,21 @@ export function Login() {
                             <span><img src={''} alt="" /> <p>CHANGE PHOTO</p></span>
 
                             <label htmlFor="EditName">
-                                <input type="text" name="EditName" id="EditName" placeholder='Enter your name' />
+                                <input type="text" name="EditName" id="EditName" placeholder='Enter your name' onChange={setNameEdit}/>
                             </label>
                             <label htmlFor="EditBio">
-                                <textarea name="EditBio" id="EditBio" cols="30" rows="10" placeholder='Enter your bio...'></textarea>
+                                <textarea name="EditBio" id="EditBio" cols="30" rows="10" placeholder='Enter your bio...' onChange={setBioEdit}></textarea>
                             </label>
                             <label htmlFor="EditPhone">
-                                <input type="text" name="EditPhone" id="EditPhone" placeholder='Enter your phone' />
+                                <input type="text" name="EditPhone" id="EditPhone" placeholder='Enter your phone' onChange={setPhoneEdit}/>
                             </label>
                             <label htmlFor="EditEmail">
-                                <input type="email" name="EditEmail" id="EditEmail" />
+                                <input type="email" name="EditEmail" id="EditEmail" onChange={setEmailEdit}/>
                             </label>
                             <label htmlFor="EditPass">
-                                <input type="password" name="EditPass" id="EditPass" />
+                                <input type="password" name="EditPass" id="EditPass" onChange={setpasswordEdit}/>
                             </label>
-                            <button type='submit' className='btn btn-primary'>Save</button>
+                            <button type='submit' className='btn btn-primary' onClick={saveEditeProfile}>Save</button>
                         </div>
                     )}
 
