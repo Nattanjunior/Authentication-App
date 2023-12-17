@@ -37,6 +37,8 @@ export function Login() {
             }
         )
         console.log(response)
+        setUser(response)
+        
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
@@ -47,15 +49,17 @@ export function Login() {
             }
         )
         console.log(response)
+        setUser(RegisterResponse)
     }
     const saveEditeProfile = async (e)=>{
-        const response = await axios.post('http://localhost:3000/Feed/editprofile',
+        const SaveData = await axios.post('http://localhost:3000/Feed/editprofile',
         JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit}),
         {
             headers: { 'Content-Type': 'application/json' }
         }
         )
-        console.log(response)
+        console.log(SaveData)
+        setUser(SaveData)
     }
 
     const handleSucessLogin = (response) => {
@@ -171,21 +175,23 @@ export function Login() {
                             <h1>Change Info</h1>
                             <p>Changes will be reflected to every services</p>
 
-                            <span><img src={''} alt="" /> <p>CHANGE PHOTO</p></span>
+                            <label htmlFor="img"> CHANGE PHOTO
+                            <input type="file" name="img" id="img" /> 
+                            </label>
 
-                            <label htmlFor="EditName">
+                            <label htmlFor="EditName"> Name
                                 <input type="text" name="EditName" id="EditName" placeholder='Enter your name' onChange={setNameEdit}/>
                             </label>
-                            <label htmlFor="EditBio">
+                            <label htmlFor="EditBio"> Bio
                                 <textarea name="EditBio" id="EditBio" cols="30" rows="10" placeholder='Enter your bio...' onChange={setBioEdit}></textarea>
                             </label>
-                            <label htmlFor="EditPhone">
+                            <label htmlFor="EditPhone"> Phone
                                 <input type="text" name="EditPhone" id="EditPhone" placeholder='Enter your phone' onChange={setPhoneEdit}/>
                             </label>
-                            <label htmlFor="EditEmail">
+                            <label htmlFor="EditEmail"> Email
                                 <input type="email" name="EditEmail" id="EditEmail" onChange={setEmailEdit}/>
                             </label>
-                            <label htmlFor="EditPass">
+                            <label htmlFor="EditPass"> Password
                                 <input type="password" name="EditPass" id="EditPass" onChange={setpasswordEdit}/>
                             </label>
                             <button type='submit' className='btn btn-primary' onClick={saveEditeProfile}>Save</button>
