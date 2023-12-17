@@ -30,7 +30,7 @@ export function Login() {
 
     const SendLogin = async (e) => {
         e.preventDefault()
-        const response = await axios.post('http://localhost:3000/Login',
+        const response = await axios.post('http://localhost:3000/Feed',
             JSON.stringify({ emailLogin, passwordLogin }),
             {
                 headers: { 'Content-Type': 'application/json' }
@@ -42,16 +42,16 @@ export function Login() {
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
-        const RegisterResponse = await axios.post('http://localhost:3000/Feed',
+        const RegisterResponse = await axios.post('http://localhost:3000/Register',
             JSON.stringify({ emailRegister, passwordRegister }),
             {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        console.log(response)
+        console.log(RegisterResponse)
         setUser(RegisterResponse)
     }
-    const saveEditeProfile = async (e)=>{
+    const saveEditProfile = async (e)=>{
         e.preventDefault(e)
         const SaveData = await axios.post('http://localhost:3000/Feed/editprofile',
         JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit}),
@@ -195,7 +195,7 @@ export function Login() {
                             <label htmlFor="EditPass"> Password
                                 <input type="password" name="EditPass" id="EditPass" onChange={setpasswordEdit}/>
                             </label>
-                            <button type='submit' className='btn btn-primary' onClick={saveEditeProfile}>Save</button>
+                            <button type='submit' className='btn btn-primary' onClick={saveEditProfile}>Save</button>
                         </div>
                     )}
 
