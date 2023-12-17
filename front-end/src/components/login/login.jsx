@@ -52,6 +52,7 @@ export function Login() {
         setUser(RegisterResponse)
     }
     const saveEditeProfile = async (e)=>{
+        e.preventDefault(e)
         const SaveData = await axios.post('http://localhost:3000/Feed/editprofile',
         JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit}),
         {
