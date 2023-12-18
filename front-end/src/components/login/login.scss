@@ -1,6 +1,6 @@
 $cor1:#BDBDBD;
 $corLink:#2D9CDB;
-$font:'Noto Sans', sans-serif;;
+$font:'Noto Sans', sans-serif;
 
 body,main{
     width: 100%;
@@ -45,6 +45,10 @@ body,main{
             height:38px;
             margin-left: 68px;
             font-weight: 400;
+           a{
+            color: #FFFFFF;
+            text-decoration: none;
+           }
         }
     }
     p{
@@ -69,6 +73,41 @@ body,main{
         a{
             text-decoration: none;
             color: $corLink;
+        }
+    }
+    
+}
+.Profile{
+    div{
+        h1,p{
+            text-align: center;
+        }
+        .informacoes{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width:60%;
+            border: 1px solid #000000;
+            padding:10px;
+            box-sizing: border-box;
+            .menu{
+                p{
+                    text-align: left;
+                }
+            }
+            .dados{
+                div{
+                   
+                    p{
+                        text-align: left;
+                        
+                    }
+                }
+               
+            }
+             
+            
         }
     }
 }

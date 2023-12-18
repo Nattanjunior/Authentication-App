@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import email from '../../assets/email.png'
 import lock from '../../assets/lock.png'
-import google from '../../assets/google.png'
 import github from '../../assets/001-github.png'
 import '../login/login.scss'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
@@ -27,7 +26,6 @@ export function Login() {
     const click = ()=>{
         setProfile(!profile)
     }
-
     const SendLogin = async (e) => {
         e.preventDefault()
         const response = await axios.post('http://localhost:3000/Feed',
@@ -38,7 +36,6 @@ export function Login() {
         )
         console.log(response)
         setUser(response)
-        
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
@@ -89,7 +86,7 @@ export function Login() {
                                     <img src={lock} alt="" />
                                     <input type="password" name="password" id="password" placeholder="Password" required onChange={(e) => { setPasswordLogin(e.target.value) }} />
                                 </div>
-                                <button type="submit" className="btn btn-primary input" onClick={SendLogin}>Login</button>
+                                <button type="submit" className="btn btn-primary input" onClick={SendLogin}><Link to={'/Perfil'}>Login</Link></button>
                             </form>
                         ) : (
                             <form action="Feed" method='post'>
@@ -102,14 +99,10 @@ export function Login() {
                                     <img src={lock} alt="" />
                                     <input type="password" name="passwordRegister" id="passwordRegister" placeholder="Password" required onChange={(e) => { setPasswordRegister(e.target.value) }} />
                                 </div>
-                                <button type="submit" className="btn btn-primary input" onClick={RegisterLogin}>Criar conta</button>
+                                <button type="submit" className="btn btn-primary input" onClick={RegisterLogin}><Link to={'/Perfil'}>Criar conta</Link></button>
                             </form>
                         )}
-
-
                         <p>or continue with these social profile</p>
-
-
                         <section className='login-tecnologies'>
                             <span className='google'>
                                 <GoogleOAuthProvider clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
@@ -130,7 +123,6 @@ export function Login() {
                             ) : (
                                 <p> Already have an account?<Link to={"/Login"} onClick={handleRegister}>Login</Link></p>
                             )}
-
                         </section>
                     </section>
                 </main>
@@ -141,29 +133,34 @@ export function Login() {
                             <h1>Personal info</h1>
                             <p>Basic info, like your name and photo</p>
                             <section className='informacoes'>
-                                <span>
+                                <div className='menu'>
                                     <h2>Profile</h2>
                                     <p>Some info may be visible to other people</p>
                                     <button onClick={click}>Edit</button>
-                                </span>
-                                <span className='photo'>
-                                    <p>PHOTO</p> <img src="" alt="" />
-                                </span>
-                                <span className='name'>
-                                    <p>NAME</p> <p>{ }</p>
-                                </span>
-                                <span className='bio'>
-                                    <p>BIO</p> <p>{ }</p>
-                                </span>
-                                <span className='PHONE'>
-                                    <p>PHONE</p> <p>{ }</p>
-                                </span>
-                                <span className='email'>
-                                    <p>email</p> <p>{emailLogin}</p>
-                                </span>
-                                <span className='password'>
-                                    <p>PASSWORD</p> <p>{passwordLogin}</p>
-                                </span>
+                                </div>
+                               
+                               <section className='dados'>
+                               <div className='photo'>
+                                    <span>PHOTO</span> <img src="" alt="" />
+                                </div>
+                                <div className='name'>
+                                    <span>NAME</span> <span>junior</span>
+                                </div>
+                                <div className='bio'>
+                                    <span>BIO</span> <span>{ 'dvpuahfuh '}</span>
+                                </div>
+                                <div className='phone'>
+                                    <span>PHONE</span> <span>{ 'wdnviuhoifuhv'}</span>
+                                </div>
+                                {/* emailLogin */}
+                                {/* passwordLogin */}
+                                <div className='email'>
+                                    <span>EMAIL</span> <span>{'dvnujuw'}</span>
+                                </div>
+                                <div className='password'>
+                                    <span>PASSWORD</span> <span>{'afvuiihv'}</span>
+                                </div>
+                               </section>
                             </section>
                         </div>
                     ) : (
@@ -198,10 +195,8 @@ export function Login() {
                             <button type='submit' className='btn btn-primary' onClick={saveEditProfile}>Save</button>
                         </div>
                     )}
-
                 </main>
             )}
-
         </Router>
     )
 }
