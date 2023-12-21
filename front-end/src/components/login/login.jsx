@@ -141,24 +141,24 @@ export function Login() {
                                
                                <section className='dados'>
                                <div className='photo'>
-                                    <span>PHOTO</span> <img src="" alt="" />
+                                    <span className='span1'>PHOTO</span> <img src="" alt="" className='span2'/>
                                 </div>
                                 <div className='name'>
-                                    <span>NAME</span> <span>junior</span>
+                                    <span className='span1'>NAME</span> <span className='span2'>junior</span>
                                 </div>
                                 <div className='bio'>
-                                    <span>BIO</span> <span>{ 'dvpuahfuh '}</span>
+                                    <span className='span1'>BIO</span> <span className='span2'>{ 'junior '}</span>
                                 </div>
                                 <div className='phone'>
-                                    <span>PHONE</span> <span>{ 'wdnviuhoifuhv'}</span>
+                                    <span className='span1'>PHONE</span> <span className='span2'>{ 'junior'}</span>
                                 </div>
                                 {/* emailLogin */}
                                 {/* passwordLogin */}
                                 <div className='email'>
-                                    <span>EMAIL</span> <span>{'dvnujuw'}</span>
+                                    <span className='span1'>EMAIL</span> <span className='span2'>{'junior'}</span>
                                 </div>
                                 <div className='password'>
-                                    <span>PASSWORD</span> <span>{'afvuiihv'}</span>
+                                    <span className='span1'>PASSWORD</span> <span className='span2'>{'junior'}</span>
                                 </div>
                                </section>
                             </section>
