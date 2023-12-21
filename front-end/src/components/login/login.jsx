@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useRef } from 'react'
 import email from '../../assets/email.png'
 import lock from '../../assets/lock.png'
 import github from '../../assets/001-github.png'
@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import { GoogleLogin } from '@react-oauth/google'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import axios from 'axios'
+import { createPortal } from 'react-dom';
 export function Login() {
     const [profile, setProfile] = useState(true)
     const [Verify, setVerify] = useState(true)
@@ -15,6 +16,9 @@ export function Login() {
     const [passwordLogin, setPasswordLogin] = useState('')
     const [emailRegister, setEmailRegister] = useState('')
     const [passwordRegister, setPasswordRegister] = useState('')
+    const [editPhoto, setEditPhoto] = useState(null)
+    const imgRef = useRef()
+    const InputRefFile = useRef()
     const [nameEdit, setNameEdit] = useState('')
     const [bioEdit, setBioEdit] = useState('')
     const [phoneEdit, setPhoneEdit] = useState('')
@@ -67,6 +71,18 @@ export function Login() {
 
     const handleErrorLogin = (error) => {
         console.log(error)
+    }
+    const handleFileChange = (e)=>{
+        const file = e.target.files[0];
+        if(file){
+            setEditPhoto(file)
+            const imgUrl = URL.createObjectURL(file)
+            imgRef.current.src = imgUrl
+            console.log(editPhoto)
+        }
+    }
+    const handleInputRefFile = ()=>{
+        InputRefFile.current.click()
     }
 
     return (
@@ -180,37 +196,77 @@ export function Login() {
                             </div>
 
                             <div className='editPhoto'>
-                                <label htmlFor="img"> CHANGE PHOTO
-                                <input type="file" name="img" id="img" />
+                                <label htmlFor="img"> 
+                                <input 
+                                type="file"
+                                ref={InputRefFile}
+                                name="img" 
+                                id="img" 
+                                onChange={handleFileChange}
+                                style={{'display':'none'}}
+                                />
+                                <button onClick={handleInputRefFile} className='btn btn-light'>CHANGE PHOTO</button>
+                                <img 
+                                ref={imgRef} 
+                                alt="Imagem selecionada" />
                                 </label>
                             </div>
 
                             <div className='editName'>
-                                <label htmlFor="EditName"> Name
-                                    <input type="text" name="EditName" id="EditName" placeholder='Enter your name' onChange={setNameEdit}/>
-                                </label>
+                                <label htmlFor="EditName">Name</label>
+                                <input 
+                                    type="text" 
+                                    name="EditName" 
+                                    id="EditName" 
+                                    placeholder='Enter your name' 
+                                    onChange={setNameEdit}
+                                />
                             </div>
                             <div className='editBio'>
-                                <label htmlFor="EditBio"> Bio
-                                    <textarea name="EditBio" id="EditBio" cols="30" rows="10" placeholder='Enter your bio...' onChange={setBioEdit}></textarea>
-                                </label>
+                                <label htmlFor="EditBio">Bio</label>
+                                <textarea 
+                                    name="EditBio" 
+                                    id="EditBio" 
+                                    cols="30" 
+                                    rows="5" 
+                                    placeholder='Enter your bio...' 
+                                    onChange={setBioEdit}>                            
+                                </textarea>
                             </div>
                             <div className='editPhone'>
-                                <label htmlFor="EditPhone"> Phone
-                                    <input type="text" name="EditPhone" id="EditPhone" placeholder='Enter your phone' onChange={setPhoneEdit}/>
-                                </label>
+                                <label htmlFor="EditPhone">Phone</label>
+                                <input 
+                                type="text" 
+                                name="EditPhone" 
+                                id="EditPhone" 
+                                placeholder='Enter your phone' 
+                                onChange={setPhoneEdit}
+                                />
                             </div>
-                            <div classname='editEmail'>
-                                <label htmlFor="EditEmail"> Email
-                                    <input type="email" name="EditEmail" id="EditEmail" onChange={setEmailEdit}/>
-                                </label>
+                            <div className='editEmail'>
+                                <label htmlFor="EditEmail">Email</label>
+                                <input 
+                                type="email" 
+                                name="EditEmail" 
+                                id="EditEmail" 
+                                placeholder='Enter your email'
+                                onChange={setEmailEdit}
+                                />
                             </div>
                             <div className='editPass'>
-                                <label htmlFor="EditPass"> Password
-                                    <input type="password" name="EditPass" id="EditPass" onChange={setpasswordEdit}/>
-                                </label>
+                                <label htmlFor="EditPass">Password</label>
+                                <input 
+                                type="password"
+                                name="EditPass" 
+                                id="EditPass" 
+                                placeholder='Enter your password'
+                                onChange={setpasswordEdit}
+                                />
                             </div>
-                            <button type='submit' className='btn btn-primary' onClick={saveEditProfile}>Save</button>
+                            <button 
+                            type='submit' 
+                            className='btn btn-primary' 
+                            onClick={saveEditProfile}>Save</button>
                         </section>
                     )}
                 </main>

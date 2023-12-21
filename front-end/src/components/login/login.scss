@@ -1,6 +1,8 @@
 $cor1:#BDBDBD;
 $corLink:#2D9CDB;
 $cor3:#828282;
+$cor4: #E0E0E0;
+
 $font:'Noto Sans', sans-serif;
 
 body,main{
@@ -153,9 +155,23 @@ body,main{
     }
 }
 .edit-profile{
-    
-    margin: auto;
-    border: 1px solid $cor3;
+    margin: 100px auto;
+    border: 1px solid $cor4;
     max-width: 845px;
     height: 827px;
+    box-sizing: border-box;
+    .titulo{
+        position: relative;
+        left: 5%;
+    }
+    .editphoto{
+        
+    }
+    .editName{
+
+    }
+    label{
+        display: block;
+    }
+    
 }
