@@ -130,13 +130,17 @@ export function Login() {
                 <main className='Profile'>
                     {profile ? (
                         <div>
-                            <h1>Personal info</h1>
-                            <p>Basic info, like your name and photo</p>
+                            <div className='titulo'>
+                                <h1>Personal info</h1>
+                                <p>Basic info, like your name and photo</p>
+                            </div>
                             <section className='informacoes'>
                                 <div className='menu'>
-                                    <h2>Profile</h2>
-                                    <p>Some info may be visible to other people</p>
-                                    <button onClick={click}>Edit</button>
+                                    <div>
+                                        <h2>Profile</h2>
+                                        <p>Some info may be visible to other people</p>
+                                    </div>
+                                    <button onClick={click} className='btn btn-light'>Edit</button>
                                 </div>
                                
                                <section className='dados'>
@@ -164,36 +168,50 @@ export function Login() {
                             </section>
                         </div>
                     ) : (
-                        <div className='edit-profile'>
+                        <section className='edit-profile'>
                             <p> &lt;Back </p>
                             <span className='nav-menu'>
                                 <img src={''} alt="" />
                             </span>
 
-                            <h1>Change Info</h1>
-                            <p>Changes will be reflected to every services</p>
+                            <div className='titulo'>
+                                <h1>Change Info</h1>
+                                <p>Changes will be reflected to every services</p>
+                            </div>
 
-                            <label htmlFor="img"> CHANGE PHOTO
-                            <input type="file" name="img" id="img" /> 
-                            </label>
+                            <div className='editPhoto'>
+                                <label htmlFor="img"> CHANGE PHOTO
+                                <input type="file" name="img" id="img" />
+                                </label>
+                            </div>
 
-                            <label htmlFor="EditName"> Name
-                                <input type="text" name="EditName" id="EditName" placeholder='Enter your name' onChange={setNameEdit}/>
-                            </label>
-                            <label htmlFor="EditBio"> Bio
-                                <textarea name="EditBio" id="EditBio" cols="30" rows="10" placeholder='Enter your bio...' onChange={setBioEdit}></textarea>
-                            </label>
-                            <label htmlFor="EditPhone"> Phone
-                                <input type="text" name="EditPhone" id="EditPhone" placeholder='Enter your phone' onChange={setPhoneEdit}/>
-                            </label>
-                            <label htmlFor="EditEmail"> Email
-                                <input type="email" name="EditEmail" id="EditEmail" onChange={setEmailEdit}/>
-                            </label>
-                            <label htmlFor="EditPass"> Password
-                                <input type="password" name="EditPass" id="EditPass" onChange={setpasswordEdit}/>
-                            </label>
+                            <div className='editName'>
+                                <label htmlFor="EditName"> Name
+                                    <input type="text" name="EditName" id="EditName" placeholder='Enter your name' onChange={setNameEdit}/>
+                                </label>
+                            </div>
+                            <div className='editBio'>
+                                <label htmlFor="EditBio"> Bio
+                                    <textarea name="EditBio" id="EditBio" cols="30" rows="10" placeholder='Enter your bio...' onChange={setBioEdit}></textarea>
+                                </label>
+                            </div>
+                            <div className='editPhone'>
+                                <label htmlFor="EditPhone"> Phone
+                                    <input type="text" name="EditPhone" id="EditPhone" placeholder='Enter your phone' onChange={setPhoneEdit}/>
+                                </label>
+                            </div>
+                            <div classname='editEmail'>
+                                <label htmlFor="EditEmail"> Email
+                                    <input type="email" name="EditEmail" id="EditEmail" onChange={setEmailEdit}/>
+                                </label>
+                            </div>
+                            <div className='editPass'>
+                                <label htmlFor="EditPass"> Password
+                                    <input type="password" name="EditPass" id="EditPass" onChange={setpasswordEdit}/>
+                                </label>
+                            </div>
                             <button type='submit' className='btn btn-primary' onClick={saveEditProfile}>Save</button>
-                        </div>
+                        </section>
                     )}
                 </main>
             )}
