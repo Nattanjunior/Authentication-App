@@ -2,7 +2,6 @@ $cor1:#BDBDBD;
 $corLink:#2D9CDB;
 $cor3:#828282;
 $cor4: #E0E0E0;
-
 $font:'Noto Sans', sans-serif;
 
 body,main{
@@ -158,17 +157,37 @@ body,main{
     margin: 100px auto;
     border: 1px solid $cor4;
     max-width: 845px;
-    height: 827px;
+    height: 987px;
     box-sizing: border-box;
-    .titulo{
+    div{
+        margin-left: 46px;
+        margin-bottom:35px;
+        padding:17px 0px 0px 18px;
+    }
+    .titulo-edit{
+       p{
         position: relative;
-        left: 5%;
+        left: 1.95px;
+       }
     }
     .editphoto{
-        
+        button{
+            position: relative;
+            top: 25px;
+            left: 48.68px;
+        }
     }
-    .editName{
-
+    input,textarea{
+        width:475px;
+        height:52px;
+        border:1px solid $cor3;
+        border-radius:12px;
+        outline: none;
+        padding-left:20px ;
+    }
+    textarea{
+        height:91px;
+        padding:17px 0px 0px 18px;
     }
     label{
         display: block;

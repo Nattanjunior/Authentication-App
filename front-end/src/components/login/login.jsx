@@ -8,6 +8,7 @@ import { GoogleLogin } from '@react-oauth/google'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import axios from 'axios'
 import { createPortal } from 'react-dom';
+import addImage from '../../assets/add.png'
 export function Login() {
     const [profile, setProfile] = useState(true)
     const [Verify, setVerify] = useState(true)
@@ -78,7 +79,6 @@ export function Login() {
             setEditPhoto(file)
             const imgUrl = URL.createObjectURL(file)
             imgRef.current.src = imgUrl
-            console.log(editPhoto)
         }
     }
     const handleInputRefFile = ()=>{
@@ -95,27 +95,59 @@ export function Login() {
                             <form action="Feed" method='post'>
                                 <div className="email input">
                                     <img src={email} alt="" />
-                                    <input type="email" id="email" name="email" placeholder="Email" required onChange={(e) => { setEmailLogin(e.target.value) }} />
+                                    <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    placeholder="Email" 
+                                    required 
+                                    onChange={(e) => { setEmailLogin(e.target.value) }} />
                                 </div>
 
                                 <div className="password input">
                                     <img src={lock} alt="" />
-                                    <input type="password" name="password" id="password" placeholder="Password" required onChange={(e) => { setPasswordLogin(e.target.value) }} />
+                                    <input 
+                                    type="password" 
+                                    name="password" 
+                                    id="password" 
+                                    placeholder="Password" 
+                                    required 
+                                    onChange={(e) => { setPasswordLogin(e.target.value) }} />
                                 </div>
-                                <button type="submit" className="btn btn-primary input" onClick={SendLogin}><Link to={'/Perfil'}>Login</Link></button>
+                                <button 
+                                type="submit" 
+                                className="btn btn-primary input"
+                                onClick={SendLogin}>
+                                <Link to={'/Perfil'}>Login</Link></button>
                             </form>
                         ) : (
                             <form action="Feed" method='post'>
                                 <div className="email input">
                                     <img src={email} alt="" />
-                                    <input type="email" id="emailRegister" name="emailRegister" placeholder="Email" required onChange={(e) => { setEmailRegister(e.target.value) }} />
+                                    <input 
+                                    type="email" 
+                                    id="emailRegister"
+                                    name="emailRegister" 
+                                    placeholder="Email" 
+                                    required 
+                                    onChange={(e) => {setEmailRegister(e.target.value) }} />
                                 </div>
 
                                 <div className="password input">
                                     <img src={lock} alt="" />
-                                    <input type="password" name="passwordRegister" id="passwordRegister" placeholder="Password" required onChange={(e) => { setPasswordRegister(e.target.value) }} />
+                                    <input 
+                                    type="password" 
+                                    name="passwordRegister" 
+                                    id="passwordRegister" 
+                                    placeholder="Password" 
+                                    required 
+                                    onChange={(e) => { setPasswordRegister(e.target.value) }} />
                                 </div>
-                                <button type="submit" className="btn btn-primary input" onClick={RegisterLogin}><Link to={'/Perfil'}>Criar conta</Link></button>
+                                <button 
+                                type="submit" 
+                                className="btn btn-primary input" 
+                                onClick={RegisterLogin}>
+                                <Link to={'/Perfil'}>Criar conta</Link></button>
                             </form>
                         )}
                         <p>or continue with these social profile</p>
@@ -184,19 +216,18 @@ export function Login() {
                             </section>
                         </div>
                     ) : (
-                        <section className='edit-profile'>
+                        <div>
                             <p> &lt;Back </p>
                             <span className='nav-menu'>
                                 <img src={''} alt="" />
                             </span>
-
-                            <div className='titulo'>
+                            <section className='edit-profile'>
+                            <div className='titulo-edit'>
                                 <h1>Change Info</h1>
                                 <p>Changes will be reflected to every services</p>
                             </div>
 
                             <div className='editPhoto'>
-                                <label htmlFor="img"> 
                                 <input 
                                 type="file"
                                 ref={InputRefFile}
@@ -205,11 +236,20 @@ export function Login() {
                                 onChange={handleFileChange}
                                 style={{'display':'none'}}
                                 />
-                                <button onClick={handleInputRefFile} className='btn btn-light'>CHANGE PHOTO</button>
+                                <button 
+                                onClick={handleInputRefFile} 
+                                className='btn btn-light'>CHANGE PHOTO</button>
                                 <img 
-                                ref={imgRef} 
-                                alt="Imagem selecionada" />
-                                </label>
+                                ref={imgRef}
+                                style={{
+                                    width:"72px",
+                                    height:"72px",
+                                    border:'1px solid #E0E0E0',
+                                    imageRendering: 'pixelated',
+                                    borderRadius: '8px',
+                                    marginLeft: '50px'
+                                }}
+                                />
                             </div>
 
                             <div className='editName'>
@@ -268,6 +308,8 @@ export function Login() {
                             className='btn btn-primary' 
                             onClick={saveEditProfile}>Save</button>
                         </section>
+                        </div>
+                       
                     )}
                 </main>
             )}
