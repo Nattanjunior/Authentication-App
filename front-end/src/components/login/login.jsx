@@ -17,7 +17,6 @@ export function Login() {
     const [passwordLogin, setPasswordLogin] = useState('')
     const [emailRegister, setEmailRegister] = useState('')
     const [passwordRegister, setPasswordRegister] = useState('')
-    const [editPhoto, setEditPhoto] = useState(null)
     const imgRef = useRef()
     const InputRefFile = useRef()
     const [nameEdit, setNameEdit] = useState('')
@@ -76,7 +75,6 @@ export function Login() {
     const handleFileChange = (e)=>{
         const file = e.target.files[0];
         if(file){
-            setEditPhoto(file)
             const imgUrl = URL.createObjectURL(file)
             imgRef.current.src = imgUrl
         }
@@ -193,7 +191,8 @@ export function Login() {
                                
                                <section className='dados'>
                                <div className='photo'>
-                                    <span className='span1'>PHOTO</span> <img src="" alt="" className='span2'/>
+                                    <span className='span1'>PHOTO</span> 
+                                    <img src={imgRef} alt="" className='span2'/>
                                 </div>
                                 <div className='name'>
                                     <span className='span1'>NAME</span> <span className='span2'>junior</span>
@@ -217,9 +216,9 @@ export function Login() {
                         </div>
                     ) : (
                         <div>
-                            <p> &lt;Back </p>
+                            <p className='back'> &lt;Back </p>
                             <span className='nav-menu'>
-                                <img src={''} alt="" />
+                                <img src={imgRef} alt="" />
                             </span>
                             <section className='edit-profile'>
                             <div className='titulo-edit'>
@@ -305,7 +304,7 @@ export function Login() {
                             </div>
                             <button 
                             type='submit' 
-                            className='btn btn-primary' 
+                            className='btn btn-primary save' 
                             onClick={saveEditProfile}>Save</button>
                         </section>
                         </div>

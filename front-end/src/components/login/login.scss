@@ -153,21 +153,26 @@ body,main{
         }
     }
 }
+.back{
+    position: relative;
+    top: 101px;
+}
 .edit-profile{
     margin: 100px auto;
     border: 1px solid $cor4;
     max-width: 845px;
-    height: 987px;
+    height: 927px;
     box-sizing: border-box;
     div{
-        margin-left: 46px;
-        margin-bottom:35px;
+        margin-left: 46.93px;
+        margin-bottom:20px;
         padding:17px 0px 0px 18px;
     }
     .titulo-edit{
        p{
         position: relative;
         left: 1.95px;
+        color: $cor3;
        }
     }
     .editphoto{
@@ -191,6 +196,13 @@ body,main{
     }
     label{
         display: block;
+    }
+    .save{
+        position: relative;
+        top: 24px;
+        left: 47.93px;
+        width:82px;
+        border-radius:8px;
     }
     
 }
