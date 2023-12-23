@@ -49,7 +49,7 @@ app.post('/Feed', async (req,res)=>{
         if(!search){
             return res.status(404).json({message:'Usuário não encontrado'})
         }
-        return res.status(200).json({message:'Login efetuado com sucesso!!'})
+        return res.status(200).json({message:'Login efetuado com sucesso!!', NewData})
     }
     catch(erro){
         return res.status(401).json({message: "Erro ao fazer login!!"})
