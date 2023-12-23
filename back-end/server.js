@@ -47,12 +47,12 @@ app.post('/Feed', async (req,res)=>{
     });
         const search = await Data.findOne({email:emailLogin, password:passwordLogin});
         if(!search){
-            return res.json({message:'Usuário não encontrado'})
+            return res.status(404).json({message:'Usuário não encontrado'})
         }
-        return res.json({message:'Login efetuado com sucesso!!'})
+        return res.status(200).json({message:'Login efetuado com sucesso!!'})
     }
     catch(erro){
-        return res.json({message: "Erro ao fazer login!!"})
+        return res.status(401).json({message: "Erro ao fazer login!!"})
     }
 });
 app.post('/Feed/editprofile', async (req, res)=>{
