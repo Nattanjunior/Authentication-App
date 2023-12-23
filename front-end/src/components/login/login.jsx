@@ -38,7 +38,7 @@ export function Login() {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        console.log(response)
+        console.log(response.data)
         setUser(response)
     }
     const RegisterLogin = async (e) => {
@@ -218,90 +218,98 @@ export function Login() {
                         <div>
                             <p className='back'> &lt;Back </p>
                             <span className='nav-menu'>
-                                <img src={imgRef} alt="" />
+                            <img src={imgRef} alt="" />
                             </span>
+
                             <section className='edit-profile'>
+
                             <div className='titulo-edit'>
-                                <h1>Change Info</h1>
-                                <p>Changes will be reflected to every services</p>
+                            <h1>Change Info</h1>
+                            <p>Changes will be reflected to every services</p>
                             </div>
 
                             <div className='editPhoto'>
-                                <input 
-                                type="file"
-                                ref={InputRefFile}
-                                name="img" 
-                                id="img" 
-                                onChange={handleFileChange}
-                                style={{'display':'none'}}
-                                />
-                                <button 
-                                onClick={handleInputRefFile} 
-                                className='btn btn-light'>CHANGE PHOTO</button>
-                                <img 
-                                ref={imgRef}
-                                style={{
-                                    width:"72px",
-                                    height:"72px",
-                                    border:'1px solid #E0E0E0',
-                                    imageRendering: 'pixelated',
-                                    borderRadius: '8px',
-                                    marginLeft: '50px'
-                                }}
-                                />
+                            <input 
+                            type="file"
+                            ref={InputRefFile}
+                            name="img" 
+                            id="img" 
+                            onChange={handleFileChange}
+                            style={{'display':'none'}}
+                            />
+
+                            <button 
+                            onClick={handleInputRefFile} 
+                            className='btn btn-light'>CHANGE PHOTO</button>
+                            <img 
+                            ref={imgRef}
+                            style={{
+                            width:"72px",
+                            height:"72px",
+                            border:'1px solid #E0E0E0',
+                            imageRendering: 'pixelated',
+                            borderRadius: '8px',
+                            marginLeft: '50px'
+                            }}
+                            />
                             </div>
 
                             <div className='editName'>
-                                <label htmlFor="EditName">Name</label>
-                                <input 
-                                    type="text" 
-                                    name="EditName" 
-                                    id="EditName" 
-                                    placeholder='Enter your name' 
-                                    onChange={setNameEdit}
-                                />
+                            <label htmlFor="EditName">Name</label>
+                            <input 
+                            type="text" 
+                            name="EditName" 
+                            id="EditName" 
+                            placeholder='Enter your name' 
+                            onChange={setNameEdit}
+                            />
                             </div>
+
                             <div className='editBio'>
-                                <label htmlFor="EditBio">Bio</label>
-                                <textarea 
-                                    name="EditBio" 
-                                    id="EditBio" 
-                                    cols="30" 
-                                    rows="5" 
-                                    placeholder='Enter your bio...' 
-                                    onChange={setBioEdit}>                            
-                                </textarea>
+                            <label htmlFor="EditBio">Bio</label>
+                            <textarea 
+                            name="EditBio" 
+                            id="EditBio" 
+                            cols="30" 
+                            rows="5" 
+                            placeholder='Enter your bio...' 
+                            onChange={setBioEdit}>                            
+                            </textarea>
                             </div>
+
                             <div className='editPhone'>
-                                <label htmlFor="EditPhone">Phone</label>
-                                <input 
-                                type="text" 
-                                name="EditPhone" 
-                                id="EditPhone" 
-                                placeholder='Enter your phone' 
-                                onChange={setPhoneEdit}
-                                />
+                            <label htmlFor="EditPhone">Phone</label>
+                            <input 
+                            type="text" 
+                            name="EditPhone" 
+                            id="EditPhone" 
+                            placeholder='Enter your phone' 
+                            onChange={setPhoneEdit}
+                            /> 
                             </div>
+
                             <div className='editEmail'>
-                                <label htmlFor="EditEmail">Email</label>
-                                <input 
-                                type="email" 
-                                name="EditEmail" 
-                                id="EditEmail" 
-                                placeholder='Enter your email'
-                                onChange={setEmailEdit}
-                                />
+                            <label htmlFor="EditEmail">Email</label>
+                            <input 
+                            type="email" 
+                            name="EditEmail" 
+                            id="EditEmail" 
+                            placeholder='Enter your email'
+                            onChange={setEmailEdit}
+                            />
                             </div>
+
                             <div className='editPass'>
-                                <label htmlFor="EditPass">Password</label>
-                                <input 
-                                type="password"
-                                name="EditPass" 
-                                id="EditPass" 
-                                placeholder='Enter your password'
-                                onChange={setpasswordEdit}
-                                />
+                            <label htmlFor="EditPass">Password</label>
+                            <input 
+                            type="password"
+                            name="EditPass" 
+                            id="EditPass" 
+                            placeholder='Enter your password'
+                            onChange={setpasswordEdit}
+                            />
                             </div>
+
                             <button 
                             type='submit' 
                             className='btn btn-primary save' 
