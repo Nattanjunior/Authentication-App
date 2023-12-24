@@ -32,7 +32,7 @@ app.post('/Register', async (req,res)=>{
             password:passwordRegister,
         })
         const saveUser = await Register.save()
-        return res.json({message:"Usuário salvo com sucesso!!"})
+        return res.status(200).json({message:"Usuário salvo com sucesso!!",data:saveUser})
     }
     catch(erro){
         console.error('Cadastro não realizado, preencha os dados corretamente!')
@@ -49,7 +49,7 @@ app.post('/Feed', async (req,res)=>{
         if(!search){
             return res.status(404).json({message:'Usuário não encontrado'})
         }
-        return res.status(200).json({message:'Login efetuado com sucesso!!', NewData})
+        return res.status(200).json({message:'Login efetuado com sucesso!!', data:NewData})
     }
     catch(erro){
         return res.status(401).json({message: "Erro ao fazer login!!"})
