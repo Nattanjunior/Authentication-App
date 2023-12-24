@@ -9,6 +9,9 @@ body,main{
     height:100%;
     font-family: $font;
 }
+.visivel{
+    display: block;
+}
 .login,.register-user{
     max-width: 473px;
     max-height: 544px;

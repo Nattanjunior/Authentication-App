@@ -8,7 +8,6 @@ import { GoogleLogin } from '@react-oauth/google'
 import { GoogleOAuthProvider } from '@react-oauth/google'
 import axios from 'axios'
 import { createPortal } from 'react-dom';
-import addImage from '../../assets/add.png'
 export function Login() {
     const [profile, setProfile] = useState(true)
     const [Verify, setVerify] = useState(true)
@@ -24,6 +23,7 @@ export function Login() {
     const [phoneEdit, setPhoneEdit] = useState('')
     const [emailEdit, setEmailEdit] = useState('')
     const [passwordEdit,  setpasswordEdit] = useState('')
+    const [visible, setVisible] = useState(true)
     const handleRegister = () => {
         setVerify(!Verify)
     };
@@ -38,8 +38,13 @@ export function Login() {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        console.log(response)
-        setUser(response)
+        if(response.status === 404){
+            alert('Credênciais erradas!!')
+            setVisible(true)
+        }else{
+            setUser(response)
+            console.log(response.status, "login efetuado com sucesso")
+        }
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
@@ -57,7 +62,7 @@ export function Login() {
         const SaveData = await axios.post('http://localhost:3000/Feed/editprofile',
         JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit}),
         {
-            headers: { 'Content-Type': 'application/json' }
+            headers: {'Content-Type': 'application/json'}
         }
         )
         console.log(SaveData)
@@ -87,6 +92,9 @@ export function Login() {
         <Router>
             {User === null ? (
                 <main>
+                    <div className={visible? 'visivel':''} style={{display:'none'}}>
+                        <p>Erro ao fazer login!!</p>
+                    </div>
                     <section className={Verify ? 'login' : 'register-user'} >
                         <h2>{Verify ? 'Login' : 'Register'}</h2>
                         {Verify ? (
@@ -316,6 +324,7 @@ export function Login() {
                         </div>
                        
                     )}
+                     
                 </main>
             )}
         </Router>
