@@ -38,7 +38,7 @@ export function Login() {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        console.log(response.data)
+        console.log(response)
         setUser(response)
     }
     const RegisterLogin = async (e) => {
@@ -49,7 +49,7 @@ export function Login() {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        console.log(RegisterResponse)
+        console.log(RegisterResponse.data.data.email)
         setUser(RegisterResponse)
     }
     const saveEditProfile = async (e)=>{
@@ -203,8 +203,6 @@ export function Login() {
                                 <div className='phone'>
                                     <span className='span1'>PHONE</span> <span className='span2'>{ 'junior'}</span>
                                 </div>
-                                {/* emailLogin */}
-                                {/* passwordLogin */}
                                 <div className='email'>
                                     <span className='span1'>EMAIL</span> <span className='span2'>{'junior'}</span>
                                 </div>
