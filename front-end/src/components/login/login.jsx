@@ -23,7 +23,6 @@ export function Login() {
     const [phoneEdit, setPhoneEdit] = useState('')
     const [emailEdit, setEmailEdit] = useState('')
     const [passwordEdit,  setpasswordEdit] = useState('')
-    const [visible, setVisible] = useState(true)
     const handleRegister = () => {
         setVerify(!Verify)
     };
@@ -38,13 +37,16 @@ export function Login() {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        if(response.status === 404){
-            alert('Credênciais erradas!!')
-            setVisible(true)
-        }else{
+        if(response && emailLogin && passwordLogin){
+            alert(response.data.message)
             setUser(response)
-            console.log(response.status, "login efetuado com sucesso")
+        }else{
+            alert(response.data.message)
         }
+       
+        
+        
+        
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
@@ -92,9 +94,6 @@ export function Login() {
         <Router>
             {User === null ? (
                 <main>
-                    <div className={visible? 'visivel':''} style={{display:'none'}}>
-                        <p>Erro ao fazer login!!</p>
-                    </div>
                     <section className={Verify ? 'login' : 'register-user'} >
                         <h2>{Verify ? 'Login' : 'Register'}</h2>
                         {Verify ? (
