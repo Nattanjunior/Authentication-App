@@ -47,9 +47,9 @@ app.post('/Feed', async (req,res)=>{
     });
         const search = await Data.findOne({email:emailLogin, password:passwordLogin});
         if(!search){
-            return res.status(404).json({message:'Usuário não encontrado'})
+            return res.json({message:'Usuário não encontrado'})
         }
-        return res.status(200).json({message:'Login efetuado com sucesso!!', data:NewData})
+        return res.json({message:'Login efetuado com sucesso!!', data:NewData})
     }
     catch(erro){
         return res.status(401).json({message: "Erro ao fazer login!!"})
