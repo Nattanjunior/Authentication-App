@@ -32,7 +32,7 @@ app.post('/Register', async (req,res)=>{
             password:passwordRegister,
         })
         const saveUser = await Register.save()
-        return res.status(200).json({message:"Usuário salvo com sucesso!!",data:saveUser})
+        return res.json({message:"Usuário salvo com sucesso!!",data:saveUser})
     }
     catch(erro){
         console.error('Cadastro não realizado, preencha os dados corretamente!')
