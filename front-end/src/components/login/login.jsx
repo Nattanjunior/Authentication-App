@@ -95,84 +95,91 @@ export function Login() {
                         <h2>{Verify ? 'Login' : 'Register'}</h2>
                         {Verify ? (
                             <form action="Feed" method='post'>
-                                <div className="email input">
-                                    <img src={email} alt="" />
-                                    <input 
-                                    type="email" 
-                                    id="email" 
-                                    name="email" 
-                                    placeholder="Email" 
-                                    required 
-                                    onChange={(e) => { setEmailLogin(e.target.value) }} />
-                                </div>
+                            <div className="email input">
+                            <img src={email} alt="" />
+                            <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Email" 
+                            required 
+                            onChange={(e) => { setEmailLogin(e.target.value) }} />
+                            </div>
 
-                                <div className="password input">
-                                    <img src={lock} alt="" />
-                                    <input 
-                                    type="password" 
-                                    name="password" 
-                                    id="password" 
-                                    placeholder="Password" 
-                                    required 
-                                    onChange={(e) => { setPasswordLogin(e.target.value) }} />
-                                </div>
-                                <button 
-                                type="submit" 
-                                className="btn btn-primary input"
-                                onClick={SendLogin}>
-                                <Link to={'/Perfil'}>Login</Link></button>
+                            <div className="password input">
+                            <img src={lock} alt="" />
+                            <input 
+                            type="password" 
+                            name="password" 
+                            id="password" 
+                            placeholder="Password" 
+                            required 
+                            onChange={(e) => { setPasswordLogin(e.target.value) }} />
+                            </div>
+
+                            <button 
+                            type="submit" 
+                            className="btn btn-primary input"
+                            onClick={SendLogin}>
+                            <Link to={'/Perfil'}>Login</Link>
+                            </button>
                             </form>
                         ) : (
                             <form action="Feed" method='post'>
-                                <div className="email input">
-                                    <img src={email} alt="" />
-                                    <input 
-                                    type="email" 
-                                    id="emailRegister"
-                                    name="emailRegister" 
-                                    placeholder="Email" 
-                                    required 
-                                    onChange={(e) => {setEmailRegister(e.target.value) }} />
-                                </div>
 
-                                <div className="password input">
-                                    <img src={lock} alt="" />
-                                    <input 
-                                    type="password" 
-                                    name="passwordRegister" 
-                                    id="passwordRegister" 
-                                    placeholder="Password" 
-                                    required 
-                                    onChange={(e) => { setPasswordRegister(e.target.value) }} />
-                                </div>
-                                <button 
-                                type="submit" 
-                                className="btn btn-primary input" 
-                                onClick={RegisterLogin}>
-                                <Link to={'/Perfil'}>Criar conta</Link></button>
+                            <div className="email input">
+                            <img src={email} alt="" />
+                            <input 
+                            type="email" 
+                            id="emailRegister"
+                            name="emailRegister" 
+                            placeholder="Email" 
+                            required 
+                            onChange={(e) => {setEmailRegister(e.target.value)}}/>
+                            </div>
+
+                            <div className="password input">
+                            <img src={lock} alt="" />
+                            <input 
+                            type="password" 
+                            name="passwordRegister" 
+                            id="passwordRegister" 
+                            placeholder="Password" 
+                            required 
+                            onChange={(e) => { setPasswordRegister(e.target.value)}}/>
+                            </div>
+
+                            <button 
+                            type="submit" 
+                            className="btn btn-primary input" 
+                            onClick={RegisterLogin}>
+                            <Link to={'/Perfil'}>Criar conta</Link>
+                    </button>
                             </form>
                         )}
                         <p>or continue with these social profile</p>
                         <section className='login-tecnologies'>
-                            <span className='google'>
-                                <GoogleOAuthProvider clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
-                                >
-                                    <GoogleLogin
-                                        clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
-                                        onScriptLoadSuccess={handleSucessLogin}
-                                        onScriptLoadError={handleErrorLogin}
-                                    />
-                                </GoogleOAuthProvider>
-                            </span>
-                            <span className='github'><img src={github} alt="" /></span>
+
+                        <span className='google'>
+                        <GoogleOAuthProvider clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
+                        >
+                        <GoogleLogin
+                        clientId='536913788151-kp714umuvpu1iu00gavg63i1gn263aa9.apps.googleusercontent.com'
+                        onScriptLoadSuccess={handleSucessLogin}
+                        onScriptLoadError={handleErrorLogin}
+                        />
+                        </GoogleOAuthProvider>
+                        </span>
+
+                        <span className='github'><img src={github} alt="" /></span>
                         </section>
 
                         <section className='register'>
-                            {Verify ? (
-                                <p>Don’t have an account yet?<Link to={"/Register"} onClick={handleRegister}>Register</Link></p>
-                            ) : (
-                                <p> Already have an account?<Link to={"/Login"} onClick={handleRegister}>Login</Link></p>
-                            )}
+                        {Verify ? (
+                            <p>Don’t have an account yet?<Link to={"/Register"} onClick={handleRegister}>Register</Link></p>
+                        ) : (
+                            <p> Already have an account?<Link to={"/Login"} onClick={handleRegister}>Login</Link></p>
+                        )}
                         </section>
                     </section>
                 </main>
@@ -181,38 +188,47 @@ export function Login() {
                     {profile ? (
                         <div>
                             <div className='titulo'>
-                                <h1>Personal info</h1>
-                                <p>Basic info, like your name and photo</p>
+                            <h1>Personal info</h1>
+                            <p>Basic info, like your name and photo</p>
                             </div>
+
                             <section className='informacoes'>
                                 <div className='menu'>
-                                    <div>
-                                        <h2>Profile</h2>
-                                        <p>Some info may be visible to other people</p>
-                                    </div>
-                                    <button onClick={click} className='btn btn-light'>Edit</button>
+                                <div>
+                                <h2>Profile</h2>
+                                <p>Some info may be visible to other people</p>
                                 </div>
-                               
+
+                                <button onClick={click} className='btn btn-light'>Edit</button>
+
+                                </div>
                                <section className='dados'>
-                               <div className='photo'>
-                                    <span className='span1'>PHOTO</span> 
-                                    <img src={imgRef} alt="" className='span2'/>
+
+                                <div className='photo'>
+                                <span className='span1'>PHOTO</span> 
+                                <img src={imgRef} alt="" className='span2'/>
                                 </div>
+
                                 <div className='name'>
-                                    <span className='span1'>NAME</span> <span className='span2'>junior</span>
+                                <span className='span1'>NAME</span> <span className='span2'>junior</span>
                                 </div>
+
                                 <div className='bio'>
-                                    <span className='span1'>BIO</span> <span className='span2'>{ 'junior '}</span>
+                                <span className='span1'>BIO</span> <span className='span2'>{ 'junior '}</span>
                                 </div>
+
                                 <div className='phone'>
-                                    <span className='span1'>PHONE</span> <span className='span2'>{ 'junior'}</span>
+                                <span className='span1'>PHONE</span> <span className='span2'>{ 'junior'}</span>
                                 </div>
+
                                 <div className='email'>
-                                    <span className='span1'>EMAIL</span> <span className='span2'>{'junior'}</span>
+                                <span className='span1'>EMAIL</span> <span className='span2'>{'junior'}</span>
                                 </div>
+                                 
                                 <div className='password'>
-                                    <span className='span1'>PASSWORD</span> <span className='span2'>{'junior'}</span>
+                                <span className='span1'>PASSWORD</span> <span className='span2'>{'junior'}</span>
                                 </div>
+
                                </section>
                             </section>
                         </div>
