@@ -31,22 +31,19 @@ export function Login() {
     }
     const SendLogin = async (e) => {
         e.preventDefault()
+        
         const response = await axios.post('http://localhost:3000/Feed',
             JSON.stringify({ emailLogin, passwordLogin }),
             {
                 headers: { 'Content-Type': 'application/json' }
             }
         )
-        if(response && emailLogin && passwordLogin){
-            alert(response.data.message)
-            setUser(response)
-        }else{
-            alert(response.data.message)
-        }
-       
-        
-        
-        
+            if(response.data.message === 'Login efetuado com sucesso!!'){
+                alert('Login Bem-Sucedido')
+                setUser(response)
+            }else{
+                alert('Usuário não encontrado')
+            }
     }
     const RegisterLogin = async (e) => {
         e.preventDefault()
