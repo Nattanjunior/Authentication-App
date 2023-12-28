@@ -18,6 +18,7 @@ const EditionData = new mongosee.Schema({
     phoneEdit:String,
     emailEdit: String,
     passwordEdit:String,
+    img:String
 })
 let Data = mongosee.model("data", CreateData);
 let Edition = mongoose.model("edit", EditionData) 
@@ -57,16 +58,17 @@ app.post('/Feed', async (req,res)=>{
 });
 app.post('/Feed/editprofile', async (req, res)=>{
     try {
-        const {nameEdit,bioEdit,phoneEdit,emailEdit,passwordEdit} = req.body;
+        const {nameEdit,bioEdit,phoneEdit,emailEdit,passwordEdit,imgRef} = req.body;
         const editionProfile = new Edition({
         nameEdit:nameEdit,
         bioEdit:bioEdit,
         phoneEdit:phoneEdit,
         emailEdit:emailEdit,
-        passwordEdit:passwordEdit
+        passwordEdit:passwordEdit,
+        img:imgRef
     });
         const saveProfile = await editionProfile.save()
-        console.log(saveProfile)
+        return res.json({message:'Dados salvos com sucesso!!', data:saveProfile})
     } catch (error) {
         return res.json({message:"Erro ao salvar os novos dados do usuário!!! "})
     }
