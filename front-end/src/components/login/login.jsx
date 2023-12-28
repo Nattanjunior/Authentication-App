@@ -59,7 +59,7 @@ export function Login() {
     const saveEditProfile = async (e)=>{
         e.preventDefault(e)
         const SaveData = await axios.post('http://localhost:3000/Feed/editprofile',
-        JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit}),
+        JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit,imgRef}),
         {
             headers: {'Content-Type': 'application/json'}
         }
@@ -210,23 +210,23 @@ export function Login() {
                                 </div>
 
                                 <div className='name'>
-                                <span className='span1'>NAME</span> <span className='span2'>junior</span>
+                                <span className='span1'>NAME</span> <span className='span2'>{nameEdit}</span>
                                 </div>
 
                                 <div className='bio'>
-                                <span className='span1'>BIO</span> <span className='span2'>{ 'junior '}</span>
+                                <span className='span1'>BIO</span> <span className='span2'>{bioEdit}</span>
                                 </div>
 
                                 <div className='phone'>
-                                <span className='span1'>PHONE</span> <span className='span2'>{ 'junior'}</span>
+                                <span className='span1'>PHONE</span> <span className='span2'>{phoneEdit}</span>
                                 </div>
 
                                 <div className='email'>
-                                <span className='span1'>EMAIL</span> <span className='span2'>{'junior'}</span>
+                                <span className='span1'>EMAIL</span> <span className='span2'>{emailEdit}</span>
                                 </div>
                                  
                                 <div className='password'>
-                                <span className='span1'>PASSWORD</span> <span className='span2'>{'junior'}</span>
+                                <span className='span1'>PASSWORD</span> <span className='span2'>{passwordEdit}</span>
                                 </div>
 
                                </section>
