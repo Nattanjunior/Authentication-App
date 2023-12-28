@@ -19,6 +19,7 @@ export function Login() {
     const imgRef = useRef()
     const InputRefFile = useRef()
     const [nameEdit, setNameEdit] = useState('')
+    const [imgbase, setImgbase] = useState()
     const [bioEdit, setBioEdit] = useState('')
     const [phoneEdit, setPhoneEdit] = useState('')
     const [emailEdit, setEmailEdit] = useState('')
@@ -59,7 +60,7 @@ export function Login() {
     const saveEditProfile = async (e)=>{
         e.preventDefault(e)
         const SaveData = await axios.post('http://localhost:3000/Feed/editprofile',
-        JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit,imgRef}),
+        JSON.stringify({ nameEdit,bioEdit,phoneEdit, emailEdit,passwordEdit,imgbase}),
         {
             headers: {'Content-Type': 'application/json'}
         }
@@ -67,7 +68,6 @@ export function Login() {
         console.log(SaveData)
         setUser(SaveData)
     }
-
     const handleSucessLogin = (response) => {
 
         console.log(response)
@@ -77,10 +77,22 @@ export function Login() {
         console.log(error)
     }
     const handleFileChange = (e)=>{
+        // pegando arquivo do usuário (no caso a imagem de perfil)
+        // e convertendo para Base64
         const file = e.target.files[0];
         if(file){
-            const imgUrl = URL.createObjectURL(file)
-            imgRef.current.src = imgUrl
+            try{
+                const reader =  new FileReader()
+                reader.onloadend = ()=>{
+                    const imgbase64 = reader.result.split(',')[1];
+                    imgRef.current.src = reader.result
+                    setImgbase(imgbase64)
+                }
+                reader.readAsDataURL(file);
+
+            }catch(error){
+                console.error(error)
+            }           
         }
     }
     const handleInputRefFile = ()=>{
@@ -206,7 +218,7 @@ export function Login() {
 
                                 <div className='photo'>
                                 <span className='span1'>PHOTO</span> 
-                                <img src={imgRef} alt="" className='span2'/>
+                                <img src={imgbase} alt="" className='span2'/>
                                 </div>
 
                                 <div className='name'>
