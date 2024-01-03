@@ -4,9 +4,11 @@ const cors = require('cors');
 const port = process.env.PORT || 3000;
 const mongosee = require('mongoose');
 const { default: mongoose } = require('mongoose');
-require('dotenv').config()
-app.use(cors())
-app.use(express.json())
+const bodyParse = require('body-parser')
+require('dotenv').config();
+app.use(cors());
+app.use(express.json());
+app.use(bodyParse.json({limit: '5mb'}));
 mongosee.connect(process.env.MONGODB_URI);
 const CreateData = new mongosee.Schema({
     email: String,
@@ -19,9 +21,9 @@ const EditionData = new mongosee.Schema({
     emailEdit: String,
     passwordEdit:String,
     img:String
-})
+});
 let Data = mongosee.model("data", CreateData);
-let Edition = mongoose.model("edit", EditionData) 
+let Edition = mongoose.model("edit", EditionData);
 app.get('/',  (req,res)=>{
     return res.send('hello world')
 });
