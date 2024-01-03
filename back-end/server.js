@@ -4,11 +4,11 @@ const cors = require('cors');
 const port = process.env.PORT || 3000;
 const mongosee = require('mongoose');
 const { default: mongoose } = require('mongoose');
-const bodyParse = require('body-parser')
+const bodyParser = require('body-parser')
 require('dotenv').config();
 app.use(cors());
 app.use(express.json());
-app.use(bodyParse.json({limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}));
 mongosee.connect(process.env.MONGODB_URI);
 const CreateData = new mongosee.Schema({
     email: String,
@@ -60,14 +60,14 @@ app.post('/Feed', async (req,res)=>{
 });
 app.post('/Feed/editprofile', async (req, res)=>{
     try {
-        const {nameEdit,bioEdit,phoneEdit,emailEdit,passwordEdit,imgRef} = req.body;
+        const {nameEdit,bioEdit,phoneEdit,emailEdit,passwordEdit,imgbase} = req.body;
         const editionProfile = new Edition({
         nameEdit:nameEdit,
         bioEdit:bioEdit,
         phoneEdit:phoneEdit,
         emailEdit:emailEdit,
         passwordEdit:passwordEdit,
-        img:imgRef
+        img:imgbase
     });
         const saveProfile = await editionProfile.save()
         return res.json({message:'Dados salvos com sucesso!!', data:saveProfile})
