@@ -85,8 +85,10 @@ export function Login() {
                 const reader =  new FileReader()
                 reader.onloadend = ()=>{
                     const imgbase64 = reader.result.split(',')[1];
-                    imgRef.current.src = reader.result
-                    setImgbase(imgbase64)
+                    setImgbase(imgbase64);
+                    if(imgRef.current){
+                        imgRef.current.src = reader.result
+                    }
                 }
                 reader.readAsDataURL(file);
 
@@ -248,7 +250,7 @@ export function Login() {
                         <div>
                             <p className='back'> &lt;Back </p>
                             <span className='nav-menu'>
-                            <img src={imgRef} alt="" />
+                            <img src={imgbase} alt="" />
                             </span>
 
                             <section className='edit-profile'>
@@ -272,7 +274,7 @@ export function Login() {
                             onClick={handleInputRefFile} 
                             className='btn btn-light'>CHANGE PHOTO</button>
                             <img 
-                            ref={imgRef}
+                            ref={imgbase}
                             style={{
                             width:"72px",
                             height:"72px",
