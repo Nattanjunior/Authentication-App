@@ -8,7 +8,7 @@ const bodyParse = require('body-parser')
 require('dotenv').config();
 app.use(cors());
 app.use(express.json());
-app.use(bodyParse.json({limit: '5mb'}));
+app.use(bodyParse.json({limit: '50mb'}));
 mongosee.connect(process.env.MONGODB_URI);
 const CreateData = new mongosee.Schema({
     email: String,
