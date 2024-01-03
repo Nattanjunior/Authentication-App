@@ -293,7 +293,7 @@ export function Login() {
                             name="EditName" 
                             id="EditName" 
                             placeholder='Enter your name' 
-                            onChange={setNameEdit}
+                            onChange={(e)=> setNameEdit(e.target.value)}
                             />
                             </div>
 
@@ -305,7 +305,7 @@ export function Login() {
                             cols="30" 
                             rows="5" 
                             placeholder='Enter your bio...' 
-                            onChange={setBioEdit}>                            
+                            onChange={(e)=> setBioEdit(e.target.value)}>                            
                             </textarea>
                             </div>
 
@@ -316,7 +316,7 @@ export function Login() {
                             name="EditPhone" 
                             id="EditPhone" 
                             placeholder='Enter your phone' 
-                            onChange={setPhoneEdit}
+                            onChange={(e)=>setPhoneEdit(e.target.value)}
                             /> 
                             </div>
 
@@ -327,7 +327,7 @@ export function Login() {
                             name="EditEmail" 
                             id="EditEmail" 
                             placeholder='Enter your email'
-                            onChange={setEmailEdit}
+                            onChange={(e)=>setEmailEdit(e.target.value)}
                             />
                             </div>
 
@@ -338,14 +338,14 @@ export function Login() {
                             name="EditPass" 
                             id="EditPass" 
                             placeholder='Enter your password'
-                            onChange={setpasswordEdit}
+                            onChange={(e)=>setpasswordEdit(e.target.value)}
                             />
                             </div>
 
                             <button 
                             type='submit' 
                             className='btn btn-primary save' 
-                            onClick={saveEditProfile}>Save</button>
+                            onClick={(e)=>saveEditProfile(e.target.value)}>Save</button>
                         </section>
                         </div>
                        
