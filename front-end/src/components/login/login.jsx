@@ -76,10 +76,10 @@ export function Login() {
     const handleErrorLogin = (error) => {
         console.log(error)
     }
-    const handleFileChange = (e)=>{
-        // pegando arquivo do usuário (no caso a imagem de perfil)
-        // e convertendo para Base64
+    const handleFileChange = (e)=>{ 
         const file = e.target.files[0];
+        // pegando arquivo do usuário (no caso a imagem de perfil)
+        // e convertendo para Base64 
         if(file){
             try{
                 const reader =  new FileReader()
